@@ -13,11 +13,10 @@ namespace UserManager_MDA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
 
-        public void onSubmit()
+        public void formSubmit(object sender, EventArgs e)
         {
 
         }
