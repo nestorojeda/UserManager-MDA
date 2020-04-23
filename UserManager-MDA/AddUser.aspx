@@ -48,8 +48,7 @@
                 <textarea class="form-control col-12" id="InformationTextarea" rows="3"></textarea>
               </div>
               <div class="custom-file row mx-0">
-                <input type="file" class="custom-file-input col-12" id="FileInput" lang="es">
-                <label class="custom-file-label col-12" for="FileInput">Seleccionar Archivo</label>
+                <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12"/>
               </div>
               <button type="submit" class="btn btn-primary mt-3">Add User</button>
             
