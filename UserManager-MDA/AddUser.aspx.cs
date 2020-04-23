@@ -16,6 +16,12 @@ namespace UserManager_MDA
 
         }
 
+
+        public void onSubmit()
+        {
+
+        }
+
         private void AddUserToDataBase(string name, string secondName, string id, string password, string category, bool isAdministrator)
         {
             var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
