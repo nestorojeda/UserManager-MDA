@@ -53,7 +53,7 @@
                 <a class="nav-link" runat="server" href="~/Login">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" runat="server" href="#">Pricing</a>
+                <a class="nav-link" runat="server" href="~/AddUser">Add User</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" runat="server" href="#">Disabled</a>

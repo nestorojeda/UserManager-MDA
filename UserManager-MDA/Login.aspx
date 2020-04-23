@@ -13,7 +13,7 @@
                 <label for="exampleInputPassword1" class="col-12 p-0">Password</label>
                 <input type="password" id="exampleInputPassword1" placeholder="Password" class="form-control col-12 ">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Log In</button>
             
         </div>
     </div>
