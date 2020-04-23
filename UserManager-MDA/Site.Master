@@ -55,9 +55,6 @@
               <li class="nav-item">
                 <a class="nav-link" runat="server" href="~/AddUser">Add User</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" runat="server" href="#">Disabled</a>
-              </li>
             </ul>
           </div>
         </nav>
