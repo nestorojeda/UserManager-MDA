@@ -11,7 +11,7 @@ namespace UserManager_MDA
 {
 
 
-    public partial class AddUser
+    public partial class Login
     {
     }
 }
