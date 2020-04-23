@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="UserManager_MDA.EditUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row min-vh-100 justify-content-center align-content-center">
-        <div class="col-6 py-3">
+        <div class="col-6 py-3"> 
             
               <div class="form-group row mx-0">
                 <label for="DNIInput" class="col-12 p-0">Identificación</label>
