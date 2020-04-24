@@ -82,7 +82,7 @@ namespace UserManager_MDA {
         /// Auto-generated field.
         /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox adminCheck;
+        protected global::System.Web.UI.WebControls.CheckBox adminCheck;
         
         /// <summary>
         /// InformationTextarea control.

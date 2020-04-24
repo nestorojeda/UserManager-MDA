@@ -44,7 +44,7 @@
                 </select>
               </div>
               <div class="form-check row mx-0 pb-3">
-                <input type="checkbox" runat="server" class="form-check-input" id="adminCheck"/>
+                  <asp:CheckBox ID="adminCheck" runat="server" Checked="false" class="form-check-input"/>
                   <label class="form-check-label" for="adminCheck">Solicitud de administrador</label>
               </div>  
               <div class="form-group row mx-0">

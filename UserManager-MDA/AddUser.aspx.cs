@@ -34,11 +34,13 @@ namespace UserManager_MDA
             name = NameInput.Value;
             surname = SurNameInput.Value;
             category = CategorySelectInput.Value;
-            admin = adminCheck.Value;
+            var isAdmin = adminCheck.Checked;
             information = InformationTextarea.Value;
 
-            if (!CheckRequirements(dni, password, repeatedPassword, name, surname, category, admin, information)
-            ) return;
+            if (isAdmin) admin = "Admin";
+            else admin = "User";
+
+            if (!CheckRequirements(dni, password, repeatedPassword, name, surname, category, admin, information)) return;
             AddUserToDataBase();
         }
         
