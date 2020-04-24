@@ -52,7 +52,7 @@ namespace UserManager_MDA
             using (var db = new SQLiteConnection(connstring))
             {
                 db.Open();
-                using (var cmd = new SQLiteCommand(getQuery()))
+                using (var cmd = new SQLiteCommand(getQuery(), db))
                 {
                     try
                     {
@@ -75,7 +75,8 @@ namespace UserManager_MDA
         
         protected string getQuery()
         {
-            return getBase() + getValues();
+            String s = getBase() + getValues();
+            return s;
         }
 
         protected string getBase()
@@ -85,8 +86,8 @@ namespace UserManager_MDA
 
         protected string getValues()
         {
-            return "\"" + dniNumber + "\",\"" + password + "\",\"" + name + "\",\"" + surname + "\",\"" + category + "\",\"" + admin + "\",\"" + information +
-                   "\")";
+            return  + dniNumber + ",'" + password + "','" + name + "','" + surname + "','" + category + "','" + admin + "','" + information +
+                   "')";
         }
 
       
