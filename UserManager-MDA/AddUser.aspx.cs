@@ -17,7 +17,6 @@ namespace UserManager_MDA
 
         }
 
-
         public void FormSubmit(object sender, EventArgs e)
         {
             string dni = DNIinput.Value;
@@ -48,6 +47,12 @@ namespace UserManager_MDA
             
             if (name == "" || surname =="" || password == ""|| repeatedPassword == "" || category == "" || admin == "" )
             {
+                if (password != repeatedPassword)
+                {
+                    fail.InnerText = "Las contraseñas no coinciden";
+                    fail.Visible = true;
+                    return false;
+                }
                 fail.InnerText = "Faltan campos por rellenar";
                 fail.Visible = true;
                 return false;
