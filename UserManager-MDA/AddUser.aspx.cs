@@ -33,7 +33,7 @@ namespace UserManager_MDA
 
             if (checkRequirements(dni, password, repeatedPassword, name,surname, category,admin, information))
             {
-                AddUserToDataBase(name, surname, dni,password, category, admin );
+                AddUserToDataBase(name, surname, dni,password, category, admin, information );
                 Response.Redirect("./Default");
             }
             else
@@ -41,6 +41,31 @@ namespace UserManager_MDA
                 //Error de que los passwords no coinciden
             }
         }
+        
+        private void AddUserToDataBase(string name, string surname, string id, string password, string category, string isAdministrator, string information)
+        {
+            var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
+            var connstring = "data source=" + relativeRoute;
+
+            using (var db = new SQLiteConnection(connstring))
+            {
+                db.Open();
+                using (var cmd = new SQLiteCommand("INSERT INTO Users(dni, password, name, surname, category, rol, information, image) VALUES (" +
+                                                   id +","+
+                                                   password+ "," +
+                                                   name + "," +
+                                                   surname + "," +
+                                                   category + "," +
+                                                   isAdministrator.ToString()+ "," +
+                                                   null + "," +
+                                                   information+ ")" , db))
+                {
+                    db.Close();
+                }
+            }
+        }
+
+      
 
         private bool checkRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin, string information)
         {
@@ -118,27 +143,8 @@ namespace UserManager_MDA
             return letter[id];
         }
 
-        private void AddUserToDataBase(string name, string secondName, string id, string password, string category, string isAdministrator)
-        {
-            var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
-            var connstring = "data source=" + relativeRoute;
 
-            using (var db = new SQLiteConnection(connstring))
-            {
-                db.Open();
-                using (var cmd = new SQLiteCommand("INSERT INTO Users(dni, password, name, surname, category, rol, information, image) VALUES (" +
-                    id +","+
-                    password+ "," +
-                    name + "," +
-                    secondName + "," +
-                    category + "," +
-                    isAdministrator.ToString()+ "," +
-                    null + "," +
-                    null+ ")" , db))
-                {
-                    db.Close();
-                }
-            }
-        }
+  
+        
     }
 }
