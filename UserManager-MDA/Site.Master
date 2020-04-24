@@ -40,20 +40,20 @@
         </asp:ScriptManager>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" runat="server" href="#">Navbar</a>
+          <a class="navbar-brand" runat="server" href="~/UserList">Gestor de usuarios</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" runat="server" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
               <li class="nav-item">
-                <a class="nav-link" runat="server" href="~/Login">Login</a>
+                <a class="nav-link" runat="server" href="~/UserList">Home<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" runat="server" href="~/AddUser">Add User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" runat="server" href="~/Login">Login</a>
               </li>
             </ul>
           </div>
