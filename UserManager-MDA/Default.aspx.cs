@@ -11,7 +11,7 @@ namespace UserManager_MDA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("~/UserList.aspx");
+            
         }
     }
 }
