@@ -27,8 +27,12 @@ namespace UserManager_MDA
             string surname = SurNameInput.Value;
             string category = CategorySelectInput.Value;
             string admin = adminCheck.Value;
+            
+            //Optional
+            string information = InformationTextarea.Value;
+            
 
-            if (checkRequirements(dni, password, repeatedPassword, name,surname, category,admin))
+            if (checkRequirements(dni, password, repeatedPassword, name,surname, category,admin, information))
             {
                 AddUserToDataBase(name, surname, dni,password, category, admin );
                 Response.Redirect("./Default");
@@ -39,7 +43,7 @@ namespace UserManager_MDA
             }
         }
 
-        private bool checkRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin)
+        private bool checkRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin, string information)
         {
             
             if (name == "" || surname =="" || password == ""|| repeatedPassword == "" || category == "" || admin == "" )
@@ -49,14 +53,11 @@ namespace UserManager_MDA
                 return false;
             }
 
-            if (CheckId(dni))
-            {
-                fail.InnerText = "DNI erróneo";
-                fail.Visible = true;
-                return false;
-            }
+            if (CheckId(dni)) return true;
             
-            return true;
+            fail.InnerText = "DNI erróneo";
+            fail.Visible = true;
+            return false;
         }
 
         private bool CheckId(string id)
