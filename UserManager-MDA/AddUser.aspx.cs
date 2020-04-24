@@ -31,7 +31,7 @@ namespace UserManager_MDA
             if (checkRequirements(dni, password, repeatedPassword, name,surname, category,admin))
             {
                 AddUserToDataBase(name, surname, dni,password, category, admin );
-                
+                Response.Redirect("./Default");
             }
             else
             {
