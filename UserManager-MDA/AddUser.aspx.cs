@@ -65,7 +65,7 @@ namespace UserManager_MDA
         private bool checkRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin, string information)
         {
             
-            if (name == "" || surname =="" || password == ""|| repeatedPassword == "" || category == "" || admin == "" )
+            if (name == "" || surname =="" || password == ""|| repeatedPassword == "" || category == "")
             {
                 if (password != repeatedPassword)
                 {
