@@ -10,7 +10,16 @@ namespace UserManager_MDA
 {
     public partial class AddUser : System.Web.UI.Page
     {
-
+        private string dni;
+        private string password;
+        private string repeatedPassword;
+        private string name;
+        private string surname;
+        private string category;
+        private string admin;
+        private string information;
+        private int dniNumber;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             fail.Visible = false;
@@ -19,25 +28,21 @@ namespace UserManager_MDA
 
         public void FormSubmit(object sender, EventArgs e)
         {
-            string dni = DNIinput.Value;
-            string password = PasswordInput.Value;
-            string repeatedPassword = RepeatPasswordInput.Value;
-            string name = NameInput.Value;
-            string surname = SurNameInput.Value;
-            string category = CategorySelectInput.Value;
-            string admin = adminCheck.Value;
-            
-            //Optional
-            string information = InformationTextarea.Value;
+            dni = DNIinput.Value;
+            password = PasswordInput.Value;
+            repeatedPassword = RepeatPasswordInput.Value;
+            name = NameInput.Value;
+            surname = SurNameInput.Value;
+            category = CategorySelectInput.Value;
+            admin = adminCheck.Value;
+            information = InformationTextarea.Value;
 
-
-            if (!checkRequirements(dni, password, repeatedPassword, name, surname, category, admin, information)
+            if (!CheckRequirements(dni, password, repeatedPassword, name, surname, category, admin, information)
             ) return;
-            AddUserToDataBase(name, surname, dni,password, category, admin, information );
-            Response.Redirect("./Default");
+            AddUserToDataBase();
         }
         
-        private void AddUserToDataBase(string name, string surname, string id, string password, string category, string isAdministrator, string information)
+        private void AddUserToDataBase()
         {
             var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
             var connstring = "data source=" + relativeRoute;
@@ -45,24 +50,46 @@ namespace UserManager_MDA
             using (var db = new SQLiteConnection(connstring))
             {
                 db.Open();
-                using (var cmd = new SQLiteCommand("INSERT INTO Users(dni, password, name, surname, category, rol, information, image) VALUES (" +
-                                                   id +","+
-                                                   password+ "," +
-                                                   name + "," +
-                                                   surname + "," +
-                                                   category + "," +
-                                                   isAdministrator+ "," +
-                                                   null + "," +
-                                                   information+ ")" , db))
+                using (var cmd = new SQLiteCommand(getQuery()))
                 {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        Response.Redirect("./Default");
+
+                    }
+                    catch
+                    {
+                        fail.InnerText = "Ya existe un usuario con este nombre";
+                        fail.Visible = true;
+                    }
+                    
+                    
                     db.Close();
                 }
             }
         }
+        
+        
+        protected string getQuery()
+        {
+            return getBase() + getValues();
+        }
+
+        protected string getBase()
+        {
+            return "insert into Users (dni , password, name, surname, category, rol, information) values (";
+        }
+
+        protected string getValues()
+        {
+            return "\"" + dniNumber + "\",\"" + password + "\",\"" + name + "\",\"" + surname + "\",\"" + category + "\",\"" + admin + "\",\"" + information +
+                   "\")";
+        }
 
       
 
-        private bool checkRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin, string information)
+        private bool CheckRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin, string information)
         {
             
             if (name == "" || surname =="" || password == ""|| repeatedPassword == "" || category == "")
@@ -94,6 +121,7 @@ namespace UserManager_MDA
                 var letter = id.Substring(id.Length - 1, 1);
                 id = id.Substring(0, id.Length - 1);
                 var number = int.Parse(id);
+                dniNumber = number;
                 var rem = number % 23;
                 var tmp = getLetter(rem);
                 if (tmp.ToLower() != letter.ToLower())
