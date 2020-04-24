@@ -29,17 +29,12 @@ namespace UserManager_MDA
             
             //Optional
             string information = InformationTextarea.Value;
-            
 
-            if (checkRequirements(dni, password, repeatedPassword, name,surname, category,admin, information))
-            {
-                AddUserToDataBase(name, surname, dni,password, category, admin, information );
-                Response.Redirect("./Default");
-            }
-            else
-            {
-                //Error de que los passwords no coinciden
-            }
+
+            if (!checkRequirements(dni, password, repeatedPassword, name, surname, category, admin, information)
+            ) return;
+            AddUserToDataBase(name, surname, dni,password, category, admin, information );
+            Response.Redirect("./Default");
         }
         
         private void AddUserToDataBase(string name, string surname, string id, string password, string category, string isAdministrator, string information)
@@ -56,7 +51,7 @@ namespace UserManager_MDA
                                                    name + "," +
                                                    surname + "," +
                                                    category + "," +
-                                                   isAdministrator.ToString()+ "," +
+                                                   isAdministrator+ "," +
                                                    null + "," +
                                                    information+ ")" , db))
                 {
