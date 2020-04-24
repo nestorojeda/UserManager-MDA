@@ -40,9 +40,8 @@ namespace UserManager_MDA
                 LinkButton button = (LinkButton)e.CommandSource;
                 GridViewRow row = (GridViewRow)button.NamingContainer;
                 var id = GridViewData.DataKeys[row.RowIndex].Value.ToString();
-                // Change code tu add redirecto to the Edit user page
-                //string url = "~/Test.aspx?id=" + id;
-                //Response.Redirect(url);
+                string url = "~/EditUser.aspx?id=" + id;
+                Response.Redirect(url);
             } else if (e.CommandName == "DeleteUser")
             {
                 // Add code to delete
