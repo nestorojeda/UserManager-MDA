@@ -54,16 +54,25 @@ namespace UserManager_MDA
                 LinkButton button = (LinkButton)e.CommandSource;
                 GridViewRow row = (GridViewRow)button.NamingContainer;
                 var id = GridViewData.DataKeys[row.RowIndex].Value.ToString();
-                var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
-                var connstring = "data source=" + relativeRoute;
-                using (var db = new SQLiteConnection(connstring))
+                string sessionId = Session["id"] + "";
+                if (sessionId.Equals(id))
                 {
-                    db.Open();
-                    SQLiteCommand cmd = new SQLiteCommand("delete from[Users] WHERE ID=" + id, db);
-                    cmd.ExecuteReader();
-                    db.Close();
+                    Response.Write("<script>alert('No se puede eliminar el usuario activo');</script>");
+                    return;
                 }
-                fetchData();
+                else
+                {
+                    var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
+                    var connstring = "data source=" + relativeRoute;
+                    using (var db = new SQLiteConnection(connstring))
+                    {
+                        db.Open();
+                        SQLiteCommand cmd = new SQLiteCommand("delete from[Users] WHERE ID=" + id, db);
+                        cmd.ExecuteReader();
+                        db.Close();
+                    }
+                    fetchData();
+                }
             }
 
         } 
