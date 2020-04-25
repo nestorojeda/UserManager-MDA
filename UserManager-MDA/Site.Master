@@ -59,6 +59,18 @@
                 <asp:Button ID="buttonLogOut" runat="server" onClick="LogOut" CssClass="nav-link" Text="Logout"/>
               </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item" id="sessionStartedAs" runat="server">
+                <span class="navbar-text">
+                  Sesión iniciada como <%: Session["rol"] %>
+                </span>
+              </li>
+              <li class="nav-item" id="sessionNotStarted" runat="server">
+                <span class="navbar-text">
+                  Sesión no iniciada
+                </span>
+              </li>
+            </ul>
           </div>
         </nav>
 

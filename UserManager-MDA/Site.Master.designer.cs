@@ -42,6 +42,24 @@ namespace UserManager_MDA
         protected global::System.Web.UI.WebControls.Button buttonLogOut;
 
         /// <summary>
+        /// Control sessionStartedAs.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sessionStartedAs;
+
+        /// <summary>
+        /// Control sessionNotStarted.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sessionNotStarted;
+
+        /// <summary>
         /// Control MainContent.
         /// </summary>
         /// <remarks>
