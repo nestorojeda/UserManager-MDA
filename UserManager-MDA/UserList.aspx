@@ -17,7 +17,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Delete" SortExpression="">
                 <ItemTemplate>
-                    <asp:LinkButton CssClass="btn btn-danger" ID="LinkButtonDelete" runat="server" CommandName="DeleteUser" CommandArgument='<%#Eval("id") %>'>Edit</asp:LinkButton>
+                    <asp:LinkButton CssClass="btn btn-danger" ID="LinkButtonDelete" runat="server" CommandName="DeleteUser" CommandArgument='<%#Eval("id") %>'>X</asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

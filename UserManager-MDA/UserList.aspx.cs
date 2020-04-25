@@ -44,13 +44,19 @@ namespace UserManager_MDA
                 Response.Redirect(url);
             } else if (e.CommandName == "DeleteUser")
             {
-                // Add code to delete
                 LinkButton button = (LinkButton)e.CommandSource;
                 GridViewRow row = (GridViewRow)button.NamingContainer;
                 var id = GridViewData.DataKeys[row.RowIndex].Value.ToString();
-                // Change code tu add redirecto to the Edit user page
-                //string url = "~/Test.aspx?id=" + id;
-                //Response.Redirect(url);
+                var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
+                var connstring = "data source=" + relativeRoute;
+                using (var db = new SQLiteConnection(connstring))
+                {
+                    db.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("delete from[Users] WHERE ID=" + id, db);
+                    cmd.ExecuteReader();
+                    db.Close();
+                }
+                fetchData();
             }
 
         }  
