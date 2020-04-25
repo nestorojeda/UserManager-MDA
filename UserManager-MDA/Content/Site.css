@@ -26,3 +26,35 @@ textarea {
         padding: 0;
     }
 }
+
+table {
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.UserManagerbtn {
+    background-color: #ff8c1a;
+    border: none;
+    color: white;
+    border-radius: 4px !important;
+}
+
+table th, table td {
+    vertical-align: middle !important;
+}
+
+tbody {
+    text-align: center;
+}
+
+table tr:first-child, table tr:first-child:hover {
+    background-color: #ff8c1a;
+}
+
+.logoutStyle {
+    border: none;
+    border-radius: 4px;
+    background-color: #ff8c1a;
+    color: white !important;
+    font-weight: bold;
+}

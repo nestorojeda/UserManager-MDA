@@ -17,7 +17,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body style="background-color: #d9ff66">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -39,34 +39,34 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light row mx-0 align-items-center" style="background-color: #ff8c1a;">
           <a class="navbar-brand" runat="server" href="~/UserList">Gestor de usuarios</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav row mx-0 align-items-center">
               <li class="nav-item">
-                <a class="nav-link" runat="server" href="~/UserList">Lista de usuarios<span class="sr-only">(current)</span></a>
+                <a class="nav-link" runat="server" href="~/UserList" style="color: aliceblue;font-weight: bold;">Lista de usuarios<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" runat="server" href="~/AddUser">Añadir Usuario</a>
+                <a class="nav-link" runat="server" href="~/AddUser" style="color: aliceblue;font-weight: bold;">Añadir Usuario</a>
               </li>
               <li class="nav-item" id="loginButton" runat="server">
-                <a class="nav-link" runat="server" href="~/Login">Login</a>
+                <a class="nav-link" runat="server" href="~/Login" style="color: aliceblue;font-weight: bold;">Login</a>
               </li>
               <li class="nav-item" id="logoutButton" runat="server">
-                <asp:Button ID="buttonLogOut" runat="server" onClick="LogOut" CssClass="nav-link" Text="Logout"/>
+                <asp:Button ID="buttonLogOut"  runat="server" onClick="LogOut" CssClass="nav-link py-1 px-3 logoutStyle" Text="Logout" style="border: none;border-radius: 4px;" />
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item" id="sessionStartedAs" runat="server">
-                <span class="navbar-text">
+                <span class="navbar-text" style="color: black;">
                   Sesión iniciada como <%: Session["rol"] %>
                 </span>
               </li>
               <li class="nav-item" id="sessionNotStarted" runat="server">
-                <span class="navbar-text">
+                <span class="navbar-text" style="color: black;">
                   Sesión no iniciada
                 </span>
               </li>

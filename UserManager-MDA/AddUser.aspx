@@ -54,11 +54,11 @@
           
               <div class="custom-file row mx-0">
                 <asp:Image ID="previewImage" runat="server"/>
-                <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12" onchange="updateImage" AutoPostBack="true"/>
+                <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12 " onchange="updateImage" AutoPostBack="true"/>
                 </div>
 
-              <asp:Button CssClass="btn btn-primary searchButton" type="button" ID="addUserButton" Text="Añadir usuario" runat="server" OnClick="FormSubmit"/>
-              <a href="~/UserList.aspx" id="cancelButton" runat="server" class="btn btn-primary mx-1">Cancelar</a>  
+              <asp:Button CssClass="UserManagerbtn btn searchButton mt-3" type="button" ID="addUserButton" Text="Añadir usuario" runat="server" OnClick="FormSubmit"/>
+              <a href="~/UserList.aspx" id="cancelButton" runat="server" class="UserManagerbtn btn mx-1 mt-3">Cancelar</a>  
         </div>
     </div>
 

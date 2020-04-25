@@ -45,8 +45,8 @@
                 <asp:Image ID="previewImage" runat="server"/>
                 <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12" onchange="updateImage" AutoPostBack="true"/>
               </div>
-              <asp:Button ID="submitButton" runat="server" Text="Editar usuario" class="btn btn-primary mt-3" OnClick="modifyUser" OnClientClick="return confirm('¿Desea cambiar los datos de este usuario?')" />
-              <a href="~/UserList.aspx" id="cancelButton" runat="server" class="btn btn-primary mt-3">Cancelar</a>  
+              <asp:Button ID="submitButton" runat="server" Text="Editar usuario" class="UserManagerbtn btn mt-3" OnClick="modifyUser" OnClientClick="return confirm('¿Desea cambiar los datos de este usuario?')" />
+              <a href="~/UserList.aspx" id="cancelButton" runat="server" class="UserManagerbtn btn mt-3">Cancelar</a>  
               <div id="fail" class="alert alert-danger" role="alert" runat="server"></div>
         </div>
         
