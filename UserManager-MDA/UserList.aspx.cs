@@ -13,7 +13,10 @@ namespace UserManager_MDA
     {        
         protected void Page_Load(object sender, EventArgs e)
         {
-            fetchData();
+            if (!IsPostBack)
+            {
+                fetchData();
+            }
         }
 
         protected void fetchData()
@@ -59,6 +62,29 @@ namespace UserManager_MDA
                 fetchData();
             }
 
-        }  
+        } 
+        
+        protected void search(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            var relativeRoute = HttpContext.Current.Server.MapPath(@"\UserManagerDB.db");
+            var connstring = "data source=" + relativeRoute;
+            using (var db = new SQLiteConnection(connstring))
+            {
+                var searchText = searchWord.Value;
+                var cat = CategorySelectInput.Value;
+                db.Open();
+                SQLiteCommand cmd = new SQLiteCommand("SELECT[id], [dni], [password], [name], [surname], [category], [rol], [information] FROM[Users] WHERE [" + cat + "] LIKE \'%" + searchText + "%\'", db);
+                cmd.CommandType = CommandType.Text;
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(dt);
+                GridViewData.DataSource = dt;
+                GridViewData.DataBind();
+            }
+        }
+        protected void resetSearch(object sender, EventArgs e)
+        {
+            fetchData();
+        }
     }
 }
