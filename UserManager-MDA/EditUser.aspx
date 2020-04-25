@@ -31,6 +31,8 @@
                   <option>Técnico Administrativo</option>
                   <option>Técnico Informático</option>
                   <option>Becario</option>
+                  <option>PAS</option>
+                  <option>Investigador</option>
                 </select>
               </div>
               <div class="form-check row mx-0 pb-3">

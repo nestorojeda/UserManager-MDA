@@ -81,9 +81,16 @@ namespace UserManager_MDA
                     }
                 }
                 cmd = new SQLiteCommand("SELECT image FROM Users WHERE ID=" + id, db);
-                byte[] bytesImage = (byte[])cmd.ExecuteScalar();
-                img = bytesImage;
-                previewImage.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytesImage);
+                try
+                {
+                    byte[] bytesImage = (byte[])cmd.ExecuteScalar();
+                    img = bytesImage;
+                    previewImage.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytesImage);
+                }
+                catch
+                {
+
+                }
                 db.Close();
             }
         }
