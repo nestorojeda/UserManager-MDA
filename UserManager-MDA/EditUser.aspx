@@ -26,13 +26,11 @@
               <div class="form-group row mx-0">
                 <label for="CategorySelectInput" class="col-12 p-0">Selecciona la categoria</label>
                 <select class="form-control col-12" id="CategorySelectInput" runat="server">
-                  <option>Alumno</option>
                   <option>Profesor</option>
-                  <option>Técnico Administrativo</option>
-                  <option>Técnico Informático</option>
-                  <option>Becario</option>
+                  <option>Estudiante</option>
                   <option>PAS</option>
                   <option>Investigador</option>
+                  <option>Otro</option>
                 </select>
               </div>
               <div class="form-check row mx-0 pb-3">
