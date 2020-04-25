@@ -79,7 +79,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p class="text-center">&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p class="text-center">Gestor de usuarios</p>
             </footer>
         </div>
 

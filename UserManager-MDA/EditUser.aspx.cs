@@ -19,7 +19,7 @@ namespace UserManager_MDA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["id"] == null)
+            if (Session["id"] == null || !Session["rol"].Equals("administrador"))
             {
                 Response.Redirect("~/Default.aspx");
             }

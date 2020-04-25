@@ -57,7 +57,8 @@
                 <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12" onchange="updateImage" AutoPostBack="true"/>
                 </div>
 
-              <asp:Button CssClass="btn btn-primary searchButton" type="button" ID="addUserButton" Text="Add user" runat="server" OnClick="FormSubmit"/>            
+              <asp:Button CssClass="btn btn-primary searchButton" type="button" ID="addUserButton" Text="Añadir usuario" runat="server" OnClick="FormSubmit"/>
+              <a href="~/UserList.aspx" id="cancelButton" runat="server" class="btn btn-primary mx-1">Cancelar</a>  
         </div>
     </div>
 
