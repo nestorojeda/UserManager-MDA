@@ -19,6 +19,10 @@ namespace UserManager_MDA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["id"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
             fail.Visible = false;
             var id = Request.QueryString["id"];
             userId = id;
