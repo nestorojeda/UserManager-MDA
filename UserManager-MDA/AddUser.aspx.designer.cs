@@ -94,6 +94,15 @@ namespace UserManager_MDA {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea InformationTextarea;
         
         /// <summary>
+        /// previewImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image previewImage;
+        
+        /// <summary>
         /// flImage control.
         /// </summary>
         /// <remarks>

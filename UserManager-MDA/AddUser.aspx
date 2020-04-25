@@ -51,9 +51,12 @@
                 <label for="InformationTextarea" class="col-12 p-0">Información</label>
                 <textarea class="form-control col-12" runat="server" id="InformationTextarea" rows="3"></textarea>
               </div>
+          
               <div class="custom-file row mx-0">
-                <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12"/>
-              </div>
+                <asp:Image ID="previewImage" runat="server"/>
+                <asp:FileUpload runat="server" ID="flImage" aria-describedby="Button1" class="col-12" onchange="updateImage" AutoPostBack="true"/>
+                </div>
+
               <asp:Button CssClass="btn btn-primary searchButton" type="button" ID="addUserButton" Text="Add user" runat="server" OnClick="FormSubmit"/>            
         </div>
     </div>

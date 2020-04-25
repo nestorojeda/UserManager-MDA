@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,16 +12,15 @@ namespace UserManager_MDA
 {
     public partial class AddUser : System.Web.UI.Page
     {
-        private string dni;
-        private string password;
-        private string repeatedPassword;
-        private string name;
-        private string surname;
-        private string category;
-        private string admin;
-        private string information;
-        private int dniNumber;
-        
+        private string _dni;
+        private string _password;
+        private string _repeatedPassword;
+        private string _name;
+        private string _surname;
+        private string _category;
+        private string _information;
+        private int _dniNumber;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             fail.Visible = false;
@@ -28,19 +29,17 @@ namespace UserManager_MDA
 
         public void FormSubmit(object sender, EventArgs e)
         {
-            dni = DNIinput.Value;
-            password = PasswordInput.Value;
-            repeatedPassword = RepeatPasswordInput.Value;
-            name = NameInput.Value;
-            surname = SurNameInput.Value;
-            category = CategorySelectInput.Value;
-            var isAdmin = adminCheck.Checked;
-            information = InformationTextarea.Value;
+            _dni = DNIinput.Value;
+            _password = PasswordInput.Value;
+            _repeatedPassword = RepeatPasswordInput.Value;
+            _name = NameInput.Value;
+            _surname = SurNameInput.Value;
+            _category = CategorySelectInput.Value;
+            _information = InformationTextarea.Value;
 
-            if (isAdmin) admin = "Admin";
-            else admin = "User";
 
-            if (!CheckRequirements(dni, password, repeatedPassword, name, surname, category, admin, information)) return;
+
+            if (!CheckRequirements(_dni, _password, _repeatedPassword, _name, _surname, _category)) return;
             AddUserToDataBase();
         }
         
@@ -56,6 +55,24 @@ namespace UserManager_MDA
                 {
                     try
                     {
+                        cmd.Parameters.Add("@Dni", DbType.Int32).Value = _dniNumber;
+                        cmd.Parameters.Add("@Password", DbType.String).Value = _password;
+                        cmd.Parameters.Add("@Name", DbType.String).Value = _name;
+                        cmd.Parameters.Add("@Surname", DbType.String).Value = _surname;
+                        cmd.Parameters.Add("@Category", DbType.String).Value = _category;
+                        if (adminCheck.Checked)
+                        {
+                            cmd.Parameters.Add("Rol", DbType.String).Value = "administrador";
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@Rol", DbType.String).Value = "usuario";
+                        }
+                        cmd.Parameters.Add("@Information", DbType.String).Value = _information;
+                        Stream fs = flImage.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                        cmd.Parameters.Add("@Image", DbType.Binary).Value = bytes;
                         cmd.ExecuteNonQuery();
                         Response.Redirect("./Default");
 
@@ -75,24 +92,25 @@ namespace UserManager_MDA
         
         protected string getQuery()
         {
-            String s = getBase() + getValues();
+            String s = GetBase() + GetValues();
             return s;
         }
 
-        protected string getBase()
+        private string GetBase()
         {
-            return "insert into Users (dni , password, name, surname, category, rol, information) values (";
+            return "insert into Users (dni , password, name, surname, category, rol, information, image) values (";
         }
 
-        protected string getValues()
+        private string GetValues()
         {
-            return  + dniNumber + ",'" + password + "','" + name + "','" + surname + "','" + category + "','" + admin + "','" + information +
-                   "')";
+
+            return "@dni" + "," + "@password" + "," + "@name" + "," + "@surname" + "," + "@category" + "," + "@rol" +
+                   "," + "@information" + "," + "@image" + ")";
         }
 
       
 
-        private bool CheckRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category, string admin, string information)
+        private bool CheckRequirements(string dni, string password, string repeatedPassword, string name, string surname, string category)
         {
             
             if (name == "" || surname =="" || password == ""|| repeatedPassword == "" || category == "")
@@ -124,7 +142,7 @@ namespace UserManager_MDA
                 var letter = id.Substring(id.Length - 1, 1);
                 id = id.Substring(0, id.Length - 1);
                 var number = int.Parse(id);
-                dniNumber = number;
+                _dniNumber = number;
                 var rem = number % 23;
                 var tmp = getLetter(rem);
                 if (tmp.ToLower() != letter.ToLower())
