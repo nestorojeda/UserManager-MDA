@@ -3,17 +3,19 @@
 
     <div class="row min-vh-100 justify-content-center align-content-center">
         <div class="col-6">
+
+              <div id="fail" class="alert alert-danger" role="alert" runat="server"></div>
             
               <div class="form-group row mx-0">
                 <label for="DNIinput" class="col-12 p-0">Identificación</label>
-                <input type="text" id="DNIinput" aria-describedby="IdHelp" placeholder="DNI" class="form-control col-12">
+                <input type="text" id="DNIinput" aria-describedby="IdHelp" placeholder="DNI" class="form-control col-12" runat="server" required>
                 <small id="IdHelp" class="form-text col-12 p-0 text-muted">Introduce tu DNI</small>
               </div>
               <div class="form-group row mx-0">
                 <label for="exampleInputPassword1" class="col-12 p-0">Password</label>
-                <input type="password" id="exampleInputPassword1" placeholder="Password" class="form-control col-12 ">
+                <input type="password" id="Passwordinput" placeholder="Password" class="form-control col-12"  runat="server" required>
               </div>
-              <button type="submit" class="btn btn-primary">Log In</button>
+              <asp:Button CssClass="btn btn-primary" ID="LogInButton" runat="server" onclick="ValidateUser" Text="Iniciar sesión" /> 
             
         </div>
     </div>
