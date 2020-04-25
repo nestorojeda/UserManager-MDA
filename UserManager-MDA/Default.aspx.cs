@@ -13,7 +13,20 @@ namespace UserManager_MDA
         {
             if(Session["id"] != null)
             {
-                Response.Redirect("~/UserList.aspx");
+                if(Session["rol"].Equals("administrador"))
+                {
+                    Response.Redirect("~/UserList.aspx");
+                }
+                else
+                {
+                    userNotLoggedMessage.Visible = false;
+                    userNotAdminMessage.Visible = true;
+                }
+            }
+            else
+            {
+                userNotLoggedMessage.Visible = true;
+                userNotAdminMessage.Visible = false;
             }
         }
     }
