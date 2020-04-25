@@ -52,8 +52,11 @@
               <li class="nav-item">
                 <a class="nav-link" runat="server" href="~/AddUser">Add User</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" id="loginButton" runat="server">
                 <a class="nav-link" runat="server" href="~/Login">Login</a>
+              </li>
+              <li class="nav-item" id="logoutButton" runat="server">
+                <asp:Button ID="buttonLogOut" runat="server" onClick="LogOut" CssClass="nav-link" Text="Logout"/>
               </li>
             </ul>
           </div>
