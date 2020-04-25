@@ -14,11 +14,15 @@ namespace UserManager_MDA
         {
             if(Session["id"] == null)
             {
+                sessionStartedAs.Visible = false;
+                sessionNotStarted.Visible = true;
                 loginButton.Visible = true;
                 logoutButton.Visible = false;
             } 
             else
             {
+                sessionStartedAs.Visible = true;
+                sessionNotStarted.Visible = false;
                 loginButton.Visible = false;
                 logoutButton.Visible = true;
             }
